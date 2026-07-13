@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: akashic
+          POSTGRES_PASSWORD: akashic_dev
+          POSTGRES_DB: akashic
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U akashic -d akashic"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: postgres://akashic:akashic_dev@localhost:5432/akashic
+      PORT: 3000
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check (src + tests)
+        run: npm run typecheck
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Run migrations
+        run: npm run migrate
+
+      - name: Integration tests
+        run: npm run test:integration

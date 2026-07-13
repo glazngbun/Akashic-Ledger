@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: akashic
+      POSTGRES_PASSWORD: akashic_dev
+      POSTGRES_DB: akashic
+    ports:
+      - "5432:5432"
+    volumes:
+      - akashic_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U akashic -d akashic"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  akashic_pg_data:

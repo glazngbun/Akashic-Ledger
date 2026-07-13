@@ -1,0 +1,26 @@
+{
+  "name": "akashic",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:integration": "vitest run --config vitest.integration.config.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.check.json",
+    "migrate": "tsx src/db/migrate.ts",
+    "audit": "tsx src/modules/audit/audit-cli.ts",
+    "build": "tsc",
+    "dev": "tsx watch src/index.ts"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.20.0",
+    "tsx": "^4.23.0",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "fastify": "^5.10.0",
+    "kysely": "^0.29.3",
+    "pg": "^8.22.0"
+  }
+}
