@@ -2,7 +2,7 @@
 
 A production-grade, event-sourced, double-entry ledger for wallet and payments systems — built around cryptographic hash chains, periodic checkpointing, bitemporal record-keeping, and an independent audit tool that verifies system integrity from first principles.
 
-[![CI](https://github.com/REPLACE_WITH_USERNAME/REPLACE_WITH_REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/REPLACE_WITH_USERNAME/REPLACE_WITH_REPO/actions/workflows/ci.yml)
+[![CI](https://github.com/glazngbun/Akashic-Ledger.git/actions/workflows/ci.yml/badge.svg)](https://github.com/glazngbun/Akashic-Ledger.git/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue)
 ![Tests](https://img.shields.io/badge/tests-100%20passing-brightgreen)
@@ -49,7 +49,7 @@ Correctness here isn't optional: concurrent writes to the same balance, cryptogr
 
 | | |
 |---|---|
-| Test suite, fully green | `docs/screenshots/tests-passing.png` |
+| Test suite, fully green | `docs/screenshots/tests-passing1.png` `docs/screenshots/tests-passing1.png`|
 | CI passing on GitHub | `docs/screenshots/ci-passing.png` |
 | `npm run audit` — clean pass | `docs/screenshots/audit-clean.png` |
 | `npm run audit` — catching tampering | `docs/screenshots/audit-tampered.png` |
